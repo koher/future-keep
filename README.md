@@ -1,6 +1,6 @@
 # FutureKeep
 
-FutureKeep keeps subscriptions of `Future`s in [Combine](https://developer.apple.com/documentation/combine) when the `get` method is called until those `Future`s are completed. It makes it easier to use `Future`s instead of completion handlers when we do not need to cancel those asynchronous operations.
+FutureKeep makes it possible to keep subscriptions of `Future`s in [Combine](https://developer.apple.com/documentation/combine) until those `Future`s are completed. It is useful to replace completion handlers with `Future`s when cancellations are not required.
 
 ```swift
 // Keeps a reference to the subscription
@@ -20,7 +20,7 @@ _ = future.sink { value in
 }
 ```
 
-When the `Failure` type of a `Future` instance is `Never`, the closure receives `Output` as its argument. Otherwise, the closure receives `Result<Output, Failure>`.
+When the `Failure` type of a `Future` is `Never`, closures receive an `Output` as its argument. Otherwise, closures receive a `Result<Output, Failure>`.
 
 ## License
 
