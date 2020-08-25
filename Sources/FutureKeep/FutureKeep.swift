@@ -1,7 +1,7 @@
 import Combine
 
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-extension Future {
+extension Publisher {
     @_disfavoredOverload
     public func get(_ body: @escaping (Result<Output, Failure>) -> Void) {
         let keep: Keep<AnyCancellable> = .init()
@@ -20,7 +20,7 @@ extension Future {
 }
 
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-extension Future where Failure == Never {
+extension Publisher where Failure == Never {
     public func get(_ body: @escaping (Output) -> Void) {
         let keep: Keep<AnyCancellable> = .init()
         keep.value = sink { output in
