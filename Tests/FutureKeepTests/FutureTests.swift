@@ -3,7 +3,6 @@ import Combine
 import FutureKeep
 
 final class FutureTests: XCTestCase {
-    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
     func testGet() {
         func async42() -> Future<Int, Never> {
             Future { promise in
